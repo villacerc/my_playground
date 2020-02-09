@@ -5,7 +5,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.item}>Components</div>
+        <div className={styles.item}>Form Fields</div>
       </div>
     )
   }
