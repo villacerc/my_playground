@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from './Select.module.scss'
 
-class Selector extends React.Component {
+class MultiSelector extends React.Component {
   state = {
     active: false,
     highlight: false,
     searchStr: '',
-    value: null,
-    initialized: false,
+    value: [],
   }
   selectorRef = null
 
@@ -43,14 +42,20 @@ class Selector extends React.Component {
     }
   }
 
-  handleChange = (e, value) => {
+  handleChange = (e, item) => {
     e.stopPropagation()
-    this.setState({ highlight: true, active: false })
+    // this.setState({ highlight: true, active: false });
 
-    this.setState({ value })
+    const { value } = this.state
+
+    const newValue = value.includes(item)
+      ? value.filter(i => i !== item)
+      : value.concat(item)
+
+    this.setState({ value: newValue })
 
     if (this.props.onChange) {
-      this.props.onChange(value)
+      this.props.onChange(newValue)
     }
   }
 
@@ -76,6 +81,8 @@ class Selector extends React.Component {
     const options = this.state.searchStr
       ? this.filterOptions()
       : this.props.options
+
+    const { value } = this.state
 
     return (
       <div className={styles.dropdown}>
@@ -105,7 +112,15 @@ class Selector extends React.Component {
                   className={styles.item}
                   onClick={e => this.handleChange(e, option)}
                 >
-                  {option}
+                  <div className={styles.checkbox_container}>
+                    {option}
+                    <input
+                      readOnly
+                      type="checkbox"
+                      checked={value.includes(option)}
+                    />
+                    <span className={styles.checkmark}></span>
+                  </div>
                 </div>
               )
             })
@@ -119,11 +134,12 @@ class Selector extends React.Component {
 
   renderValue = () => {
     if (!this.state.initialized) return
-    return (
-      this.state.value || (
-        <span className={styles.placeholder}>{this.props.placeholder}</span>
-      )
-    )
+
+    if (this.state.value.length > 0) {
+      return `${this.state.value.length} Selected`
+    }
+
+    return <span className={styles.placeholder}>{this.props.placeholder}</span>
   }
 
   render() {
@@ -144,4 +160,4 @@ class Selector extends React.Component {
   }
 }
 
-export default Selector
+export default MultiSelector
