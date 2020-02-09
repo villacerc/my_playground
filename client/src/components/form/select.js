@@ -128,17 +128,23 @@ class Selector extends React.Component {
 
   render() {
     const { highlight, active } = this.state
+    const { hasError, error } = this.props
 
     return (
-      <div
-        ref={node => (this.selectorRef = node)}
-        onMouseDown={() => this.setState({ highlight: true })}
-        onClick={() => this.setState({ highlight: false, active: true })}
-        className={`${styles.selector} ${highlight ? styles.highlight : ''}`}
-      >
-        <div className={styles.content}>{this.renderValue()}</div>
-        <i className="fas fa-caret-down"></i>
-        {active && this.renderDropdown()}
+      <div>
+        <div
+          ref={node => (this.selectorRef = node)}
+          onMouseDown={() => this.setState({ highlight: true })}
+          onClick={() => this.setState({ highlight: false, active: true })}
+          className={`${styles.selector} ${highlight ? styles.highlight : ''} ${
+            hasError ? styles.error : ''
+          }`}
+        >
+          <div className={styles.content}>{this.renderValue()}</div>
+          <i className="fas fa-caret-down"></i>
+          {active && this.renderDropdown()}
+        </div>
+        {hasError && error && <p className={styles.errorText}>{error}</p>}
       </div>
     )
   }

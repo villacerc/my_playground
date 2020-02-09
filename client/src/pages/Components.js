@@ -7,11 +7,12 @@ class Components extends Component {
   render() {
     return (
       <div className="content">
-        <p>Select</p>
+        <h3>Select</h3>
         <Select options={['hello', 'there']} />
-        <p>Multi Select</p>
+        <Select options={['hello', 'there']} hasError={true} error="Required" />
+        <h3>Multi Select</h3>
         <MultiSelect options={['hello', 'there']} />
-        <p>Checkbox</p>
+        <h3>Checkbox</h3>
         <Checkbox />
       </div>
     )

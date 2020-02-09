@@ -35,6 +35,18 @@
   }
 }
 
+.error {
+  border: 1px solid #f05454;
+  box-shadow: 0 0 0 1px #f05454;
+  background: white;
+}
+
+.errorText {
+  margin-top: 3px;
+  color: #f05454;
+  font-size: 11pt;
+}
+
 .dropdown {
   position: absolute;
   top: 100%;
