@@ -10,7 +10,19 @@
   box-sizing: border-box;
   border-right: 4px solid #8a8a8a;
 }
+
 .item {
   font-size: 15pt;
   font-weight: 400;
+  margin: 20px 0;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.active {
+  a {
+    text-decoration: underline;
+  }
 }

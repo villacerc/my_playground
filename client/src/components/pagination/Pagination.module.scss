@@ -1,0 +1,41 @@
+.pagination {
+  display: flex;
+  button {
+    cursor: pointer;
+    outline: 0;
+    height: 23px;
+    background: white;
+    width: 40px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+      rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    svg {
+      height: 100%;
+      width: 15px;
+    }
+  }
+  button:first-child svg {
+    transform: rotate(180deg);
+  }
+  > *:hover {
+    background: #e8e8e8;
+  }
+}
+
+.pageNum {
+  margin: 0 5px;
+  min-width: 23px;
+  height: 23px;
+  text-align: center;
+  line-height: 1.7;
+  cursor: pointer;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+}
+
+.activePageNum {
+  background: rgb(14, 168, 230) !important;
+  color: white;
+  font-weight: 500;
+}
