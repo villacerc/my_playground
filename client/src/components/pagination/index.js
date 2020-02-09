@@ -7,63 +7,95 @@ const myarr = []
 class Pagination extends Component {
   state = {
     selectedPage: 1,
-    pageCount: 20,
     pageRange: [],
-    rowsPerPage: 1,
+    rowsPerPage: 5,
+    initialized: false,
   }
 
   componentDidMount() {
-    this.setPagination()
+    this.initialize()
   }
 
-  setRowsPerPage = ({ value }) => {
-    let pageCount = null
+  initialize = () => {
+    const { itemsPerPage } = this.props
+
+    this.setRowsPerPage(itemsPerPage)
+  }
+
+  setRowsPerPage = value => {
+    const { list } = this.props
     let rowsPerPage = null
 
-    if (value === 'all') {
-      pageCount = 1
-      rowsPerPage = myarr.length
+    if (value === 'all' || !value) {
+      rowsPerPage = list.length
     } else {
-      pageCount = Math.ceil(myarr.length / value)
       rowsPerPage = value
     }
 
     this.setState(
       {
-        pageCount,
         rowsPerPage,
+        initialized: true,
       },
-      () => this.setPagination(1)
+      () => this.setPagination()
     )
   }
 
-  getData = () => {
-    return myarr
+  handleChange = () => {
+    const myarr = this.props.list
       .slice(
         (this.state.selectedPage - 1) * this.state.rowsPerPage,
         this.state.rowsPerPage * this.state.selectedPage
       )
       .map(el => el)
+
+    this.props.onChange(myarr)
+  }
+
+  getPageOptions = () => {
+    const options = []
+
+    if (myarr.length >= 5) {
+      let count = 1
+      while (myarr.length / (5 * count) > 1 && options.length < 3) {
+        const value = 5 * count
+        options.push({ value, label: value })
+        count += 1
+      }
+    }
+
+    options.push({ value: 'all', label: 'All' })
+
+    return options
   }
 
   setPagination = (value = null) => {
     const DEFAULT_PAGE_RANGE = 7
-    const PAGES_TO_PREVIEW = 3
-    const MAX_PAGE_RANGE =
-      this.state.pageCount < DEFAULT_PAGE_RANGE
-        ? this.state.pageCount
-        : DEFAULT_PAGE_RANGE
+    const PAGES_TO_PREVIEW = 3 //amount of page cells to preview after the selected page
 
-    let { pageCount, selectedPage, pageRange } = this.state
+    let maxPageRange = 1 //amount of cells to show at a time in the pagination
+    let totalPageCount = 1
 
-    let startingPage = 1
-    pageRange = []
+    const { rowsPerPage } = this.state
 
+    //set totalPageCount and maxPageRange
+    if (rowsPerPage !== 'all') {
+      totalPageCount = Math.ceil(this.props.list.length / rowsPerPage)
+
+      maxPageRange =
+        totalPageCount < DEFAULT_PAGE_RANGE
+          ? totalPageCount
+          : DEFAULT_PAGE_RANGE
+    }
+
+    let { selectedPage } = this.state
+
+    //set newly selected page
     if (value) {
       if (isNaN(value)) {
         if (
           (selectedPage === 1 && value === 'prev') ||
-          (selectedPage === pageCount && value === 'next')
+          (selectedPage === totalPageCount && value === 'next')
         ) {
           return
         }
@@ -75,32 +107,39 @@ class Pagination extends Component {
       }
     }
 
-    if (selectedPage + PAGES_TO_PREVIEW > pageCount) {
+    let startingPage = 1 //starting cell from the pagination
+
+    if (selectedPage + PAGES_TO_PREVIEW > totalPageCount) {
       //don't shift anymore to right
-      startingPage = pageCount - (MAX_PAGE_RANGE - 1)
+      startingPage = totalPageCount - (maxPageRange - 1)
     } else if (selectedPage > 5) {
       //shift page range
       startingPage = selectedPage - PAGES_TO_PREVIEW
 
-      if (startingPage + MAX_PAGE_RANGE >= pageCount) {
+      if (startingPage + maxPageRange >= totalPageCount) {
         //shift to last page range
-        startingPage = pageCount - (MAX_PAGE_RANGE - 1)
+        startingPage = totalPageCount - (maxPageRange - 1)
       }
     }
 
-    for (let i = 0; i < MAX_PAGE_RANGE; i++) {
+    const pageRange = []
+
+    for (let i = 0; i < maxPageRange; i++) {
       pageRange.push(startingPage)
       startingPage += 1
     }
 
-    this.setState({ pageRange, selectedPage })
+    this.setState({ pageRange, selectedPage }, this.handleChange)
   }
 
   render() {
+    if (!this.state.initialized) return null
+    if (this.state.pageCount === 1) return null
+
     return (
       <div className={styles.pagination}>
         <button onClick={() => this.setPagination('prev')}>
-          {/* <PointyArrow /> */}
+          <i class="fas fa-arrow-left"></i>
         </button>
         {this.state.pageRange.map((num, i) => {
           const { selectedPage } = this.state
@@ -119,7 +158,7 @@ class Pagination extends Component {
           )
         })}
         <button onClick={() => this.setPagination('next')}>
-          {/* <PointyArrow /> */}
+          <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     )

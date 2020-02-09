@@ -15,14 +15,15 @@ class Sidebar extends Component {
     return (
       <div className={styles.container}>
         {links.map(({ href, name }) => (
-          <div
+          <Link
             className={classNames(
               styles.item,
               pathname === href ? styles.active : ''
             )}
+            to={href}
           >
-            <Link to={href}>{name}</Link>
-          </div>
+            {name}
+          </Link>
         ))}
       </div>
     )

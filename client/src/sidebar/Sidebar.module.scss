@@ -6,23 +6,25 @@
   bottom: 0;
   left: 0;
   color: white;
-  padding: 30px;
   box-sizing: border-box;
   border-right: 4px solid #8a8a8a;
+  padding-top: 50px;
 }
 
 .item {
-  font-size: 15pt;
   font-weight: 400;
-  margin: 20px 0;
-  a {
-    text-decoration: none;
+  padding-left: 60px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ababab;
+  &:hover {
     color: white;
   }
 }
 
 .active {
-  a {
-    text-decoration: underline;
-  }
+  background-color: #0db887;
+  color: white;
 }
