@@ -6,6 +6,7 @@ import classNames from 'classnames'
 const links = [
   { href: '/', name: 'Form Fields' },
   { href: '/pagination', name: 'Pagination' },
+  { href: '/tiles', name: 'Tiles' },
 ]
 
 class Sidebar extends Component {

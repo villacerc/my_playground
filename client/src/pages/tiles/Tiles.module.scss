@@ -1,0 +1,41 @@
+.general_grid {
+  display: grid;
+  grid-gap: 15px;
+  //start minsize of 200px and fill rest with 1fr (fraction) from empty space
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.item {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  height: 100px;
+}
+
+.pattern_grid {
+  display: grid;
+  grid-gap: 15px;
+  //grid consisting of 200px column plus a 100px column
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr) 100px);
+}
+
+.tile_grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 200px; //row height
+  grid-auto-flow: dense;
+}
+
+.tile_item:nth-child(2),
+.tile_item:nth-child(5),
+.tile_item:nth-child(6) {
+  grid-column: span 2; //wide
+}
+
+.tile_item:nth-child(4),
+.tile_item:nth-child(6) {
+  grid-row: span 2; //tall
+}
+
+.tile_item {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
