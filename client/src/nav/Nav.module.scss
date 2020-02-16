@@ -1,0 +1,140 @@
+.container {
+  width: 200px;
+}
+
+.mask {
+  position: fixed;
+  top: 50px;
+  left: 200px;
+  right: 0;
+  bottom: 0;
+  background: black;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidenav {
+  overflow: hidden;
+  color: white;
+  box-sizing: border-box;
+  background-color: #303236;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.sidenav_content {
+  padding-top: 50px;
+}
+
+.link {
+  font-weight: 400;
+  padding-right: 20px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: #ababab;
+  &:hover {
+    color: white;
+  }
+}
+
+.show {
+  transition: 0.3s ease;
+  width: 200px !important;
+  .sidenav {
+    transition: 0.3s ease;
+    width: 200px !important;
+    overflow: auto;
+  }
+  .mask {
+    visibility: visible;
+    transition: opacity 0.15s 0.3s ease;
+    opacity: 0.2;
+  }
+}
+
+.hide {
+  transition: 0.3s ease;
+  width: 0;
+  .sidenav {
+    transition: 0.3s ease;
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+.link_active {
+  background-color: #0db887;
+  color: white;
+}
+
+.topnav {
+  background-color: #2a2c2e;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 50px;
+  color: white;
+  box-sizing: border-box;
+  display: none;
+  transition: 0.3s ease;
+  z-index: 99;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.burger {
+  width: 25px;
+  cursor: pointer;
+  transition: all 0.3s 0.2s ease;
+}
+
+.burger:after,
+.burger:before,
+.burger div {
+  background-color: #fff;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 5px 0;
+  transition: all 0.3s 0.2s ease;
+}
+
+.burger_active:before {
+  transform: translateY(8px) rotate(135deg);
+}
+
+.burger_active:after {
+  transform: translateY(-6px) rotate(-135deg);
+}
+
+.burger_active div {
+  transform: scale(0);
+}
+
+//desktop
+@media (min-width: 1025px) {
+  .show {
+    .mask {
+      visibility: hidden;
+    }
+  }
+}
+
+//mobile
+@media (max-width: 1024px) {
+  .sidenav,
+  .container {
+    width: 0;
+  }
+  .topnav {
+    display: flex;
+  }
+}

@@ -19,10 +19,22 @@ code {
     monospace;
 }
 
-.app-container {
-  margin-left: 200px;
+.global-container {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+}
+
+.global-main {
+  flex: 1;
 }
 
 .content {
   padding: 30px;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-top: 25px;
+  }
 }

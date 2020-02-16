@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import styles from './Tiles.module.scss'
+import styles from './Grid.module.scss'
 
-class Tiles extends Component {
+class Grid extends Component {
   render() {
     return (
       <div className="content">
@@ -28,4 +28,4 @@ class Tiles extends Component {
   }
 }
 
-export default Tiles
+export default Grid
