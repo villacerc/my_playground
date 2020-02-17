@@ -1,0 +1,31 @@
+.tile {
+  align-items: stretch;
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
+  min-height: min-content;
+  border: 1px solid black;
+}
+
+.tile:not(.is-child) {
+  display: flex;
+}
+
+.tile .is-ancestor {
+  //   margin-left: -0.75rem;
+  //   margin-right: -0.75rem;
+  //   margin-top: -0.75rem;
+}
+
+.tile .is-vertical {
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .tile:not(.is-child) {
+    display: block;
+  }
+}

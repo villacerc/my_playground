@@ -23,6 +23,34 @@ class Grid extends Component {
             <div className={styles.tile_item}>{i + 1}</div>
           ))}
         </div>
+        <h3>Tile Flexbox</h3>
+        <div className="tile is-ancestor">
+          <div className="tile is-vertical">
+            <div className="tile">
+              <div className="tile is-parent is-vertical">
+                <article>hello</article>
+                <article>hello</article>
+              </div>
+              <div className="tile is-parent">
+                <article>hello</article>
+              </div>
+            </div>
+            <div className="tile">
+              <article>
+                Laborum reprehenderit do minim aliqua consequat excepteur
+                voluptate dolore. Magna duis dolore do do voluptate in ad
+                deserunt laboris et
+              </article>
+            </div>
+          </div>
+          <div className="tile">
+            Dolor consectetur eiusmod non anim deserunt nostrud laborum in.
+            Mollit ad deserunt proident nostrud ipsum adipisicing do minim
+            veniam. Aute incididunt anim et ad id. Commodo eu quis excepteur
+            proident id ad fugiat. Culpa labore culpa cupidatat deserunt
+            exercitation occaecat enim magna minim adipisicing.
+          </div>
+        </div>
       </div>
     )
   }
