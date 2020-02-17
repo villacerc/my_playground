@@ -4,6 +4,7 @@ import Components from './pages/Components'
 import Pagination from './pages/Pagination'
 import Nav from './nav'
 import Grid from './pages/grid'
+import AspectRatio from './pages/aspect_ratio'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Components path="/" />
           <Pagination path="/pagination" />
           <Grid path="/grid" />
+          <AspectRatio path="/aspect-ratio" />
         </Router>
       </main>
     </div>

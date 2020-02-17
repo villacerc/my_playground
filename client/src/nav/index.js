@@ -7,6 +7,7 @@ const links = [
   { href: '/', name: 'Form Fields' },
   { href: '/pagination', name: 'Pagination' },
   { href: '/grid', name: 'Grid' },
+  { href: '/aspect-ratio', name: 'Aspect Ratio' },
 ]
 
 class Nav extends Component {
