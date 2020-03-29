@@ -1,0 +1,43 @@
+.slider_container {
+  position: relative;
+}
+
+.slider {
+  position: absolute;
+  overflow: hidden;
+  width: 300px;
+  height: 200px;
+}
+
+.slider_content {
+  border: 1px solid grey;
+  animation: down 0.3s forwards;
+  transform: translateY(-200%);
+  background: white;
+}
+
+.animate_in {
+  animation: slide-down 0.3s forwards;
+}
+
+.animate_out {
+  animation: slide-up 0.3s forwards;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-200%);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-200%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Select from '../components/form/select'
 import MultiSelect from '../components/form/multiselect'
 import Checkbox from '../components/form/checkbox'
+import SlidingContainer from '../components/form/slidingContainer'
 
 class Components extends Component {
   render() {
@@ -14,6 +15,8 @@ class Components extends Component {
         <MultiSelect options={['hello', 'there']} />
         <h3>Checkbox</h3>
         <Checkbox />
+        <h3>Sliding Container</h3>
+        <SlidingContainer />
       </div>
     )
   }
