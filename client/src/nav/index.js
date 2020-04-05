@@ -8,6 +8,7 @@ const links = [
   { href: '/pagination', name: 'Pagination' },
   { href: '/grid', name: 'Grid' },
   { href: '/aspect-ratio', name: 'Aspect Ratio' },
+  { href: '/parallax', name: 'Parallax' },
 ]
 
 class Nav extends Component {

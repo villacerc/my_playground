@@ -1,0 +1,50 @@
+.parallax_content {
+  margin-top: 100px;
+  height: 2000px;
+}
+
+.parallax_text_container {
+  background-color: green;
+  height: 100px;
+  text-align: center;
+  .parallax_text {
+    position: relative;
+    color: white;
+  }
+}
+
+.parallax_bg_container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax_bg {
+  background-image: url(http://placekitten.com/g/1000/150);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  height: 130%;
+  width: 100%;
+  position: absolute;
+  top: auto;
+  bottom: 0;
+}
+
+.parallax_bg_container_resize {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    background-image: url(http://placekitten.com/g/1000/150);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    left: -15%;
+    right: 0;
+  }
+}
