@@ -9,6 +9,7 @@ const links = [
   { href: '/grid', name: 'Grid' },
   { href: '/aspect-ratio', name: 'Aspect Ratio' },
   { href: '/parallax', name: 'Parallax' },
+  { href: '/modal', name: 'Modal' },
 ]
 
 class Nav extends Component {

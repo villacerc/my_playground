@@ -6,6 +6,7 @@ import Nav from './nav'
 import Grid from './pages/grid'
 import AspectRatio from './pages/aspect_ratio'
 import Parallax from './pages/parallax'
+import Modal from './pages/modal'
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
           <Pagination path="/pagination" />
           <Grid path="/grid" />
           <AspectRatio path="/aspect-ratio" />
-          <Parallax path="parallax" />
+          <Parallax path="/parallax" />
+          <Modal path="/modal" />
         </Router>
       </main>
     </div>
